@@ -92,7 +92,7 @@ This section of the website is only available for users that have already regist
 This is because it displays who the user had voted for in the list of available candidates.
 
 
-### Authors
+## Authors
 
 #### Arciella Brience C. Crisostomo [arciella_brience_crisostomo@dlsu.edu.ph]
 

@@ -90,3 +90,10 @@ activities in the program, the main page redirects the user to their respective 
 ### Voter's Receipt
 This section of the website is only available for users that have already registered and voted in the system.
 This is because it displays who the user had voted for in the list of available candidates.
+
+
+### Authors
+
+#### Arciella Brience C. Crisostomo [arciella_brience_crisostomo@dlsu.edu.ph]
+
+#### Dustin Kyle D. Landicho [dustin_kyle_landicho@dlsu.edu.ph]

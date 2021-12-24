@@ -1,0 +1,501 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- gives the browser instructions on how to control the page's dimension and scaling -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+
+        body {
+            position: relative;
+            background-image: url("shot3.jpeg");
+            background-size: 100%;
+            /*background-repeat: no-repeat;*/
+            /*padding-left: 10px;*/
+            /*overflow: scroll;*/
+
+            animation: move 10s ease infinite;
+            transform: translate3d(0, 0, 0);
+            /*background: linear-gradient(45deg, #49D49D 10%, #A2C7E5 90%);*/
+            /*height: 100vh*/
+        }
+
+
+        /*menu bar*/
+        .topNav {
+            background-color: yellow;
+            overflow: hidden;
+            border-radius: 5px;
+            left: 5px;
+        }
+
+        .topNav a {
+            float: right;
+            padding: 20px 16px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            font-family: "Verdana";
+        }
+
+        .topNav a:visited {
+            color: blue;
+        }
+
+        .topNav a:hover {
+            background-color: white;
+            color: red;
+        }
+
+        /*.topNav a:visited {*/
+        /*    color: blue;*/
+        /*}*/
+
+        .topNav a.active {
+            background-color: lightgrey;
+            color: black;
+        }
+
+        .topNav b {
+            /*float: left;*/
+            /*padding: 14px 16px;*/
+            /*text-align: center;*/
+            /*font-size: 20px;*/
+            /*font-family: "Courier New";*/
+
+            float: left;
+            padding: 20px 16px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            font-family: "Verdana";
+        }
+
+        #countdown {
+            float: left;
+            /*padding: 5px;*/
+            padding: 14px 16px;
+            text-align: center;
+            font-size: 20px;
+            font-family: "Courier New";
+        }
+
+        .content {
+            position: relative;
+            bottom: 0;
+            background: rgb(0, 0, 0); /* Fallback color */
+            background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+            color: #f1f1f1;
+            width: 100%;
+        }
+
+        .content:hover {
+            background-color: white;
+            color: red;
+        }
+
+        * {
+            column-gap: 40px;
+            box-sizing: border-box;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            display: block;
+            align-items: center;
+            justify-content: center;
+            /*margin: 0 auto;*/
+            left: 50px;
+            top: -80px;
+            position: relative;
+            float: left;
+            width: 30%;
+            /*height: 80%;*/
+            padding: 10px;
+            margin: 6px;
+            height: 300px; /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            /*column-gap: 40px;*/
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .column1Row1 {
+            position: relative;
+            bottom: 20px;
+            left: 7px;
+            font-family: Georgia;
+            display: block;
+        }
+
+        .column1Row1:hover {
+            color: black;
+        }
+
+        .column1Row2 {
+            position: absolute;
+            bottom: 172px;
+            left: 20px;
+            font-size: 12px;
+            font-family: "Lucida Grande";
+            display: block;
+            color: lightgray;
+        }
+
+        .column2Row1 {
+            text-align: center;
+            position: relative;
+            top: -20px;
+        }
+
+        .column3Row1 {
+            position: relative;
+            bottom: 20px;
+            font-family: Georgia;
+        }
+
+        .column3Row2 {
+            position: absolute;
+            bottom: 195px;
+            left: 10px;
+            font-size: 12px;
+            font-family: "Lucida Grande";
+            display: block;
+            color: lightgray;
+        }
+
+        .row a:visited {
+            color: yellow;
+        }
+
+        .column1Image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 65%;
+        }
+
+        .column2Image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 55%;
+        }
+
+        .column3Image {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 77%;
+        }
+
+        .botNav {
+            position: absolute;
+            background-color: #254578;
+            overflow: hidden;
+            border-radius: 5px;
+            /*bottom: 1px;*/
+            width: 100%;
+            /*top: 648px;*/
+            /*top: 740px;*/
+            top: 648px;
+        }
+
+        .botNav a {
+            float: right;
+            padding: 20px 16px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            font-family: "Verdana";
+            color: white;
+        }
+
+        .hashtag {
+            position: absolute;
+            /*top: 648px;*/
+            /*top: 740px;*/
+            top: 648px;
+            float: right;
+            padding: 20px 16px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            font-family: "Verdana";
+            color: white;
+        }
+
+        .user {
+            position: absolute;
+            top: 220px;
+            right: 550px;
+            /*width: 90%;*/
+            width: 100%;
+            /*max-width: 340px;*/
+            max-width: 400px;
+            margin: 10vh auto;
+        }
+
+        .form {
+            margin-top: 40px;
+            border-radius: 6px;
+            overflow: hidden;
+            opacity: 0;
+            transform: translate3d(0, 500px, 0);
+            animation: arrive 500ms ease-in-out 0.9s forwards;
+        }
+
+        .form--no {
+            animation: NO 1s ease-in-out;
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .form__input {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            font-family: "Roboto";
+            -webkit-appearance: none;
+            border: 0;
+            outline: 0;
+            transition: 0.3s;
+        }
+
+        .form__input:focus {
+            filter: brightness(90%);
+             /*background: darken(#fff, 3%);*/
+            background: #fff;
+         }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            font-family: "Roboto";
+            -webkit-appearance: none;
+            outline: 0;
+            border: 0;
+            color: white;
+            background: #ABA194;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ABA194;
+            filter: brightness(90%);
+             /*background: darken(#ABA194, 5%);*/
+        }
+
+
+        @keyframes NO {
+            from, to {
+                -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0);
+            }
+
+            10%, 30%, 50%, 70%, 90% {
+                -webkit-transform: translate3d(-10px, 0, 0);
+                transform: translate3d(-10px, 0, 0);
+            }
+
+            20%, 40%, 60%, 80% {
+                -webkit-transform: translate3d(10px, 0, 0);
+                transform: translate3d(10px, 0, 0);
+            }
+        }
+
+        @keyframes arrive {
+            0% {
+                opacity: 0;
+                transform: translate3d(0, 50px, 0);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes move {
+            0% {
+                background-position: 0 0
+            }
+
+            50% {
+                background-position: 100% 0
+            }
+
+            100% {
+                background-position: 0 0
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!--    &lt;!&ndash;    OG&ndash;&gt;-->
+<!--    &lt;!&ndash;- <meta http-equiv = "Refresh" content="5; url=register.html" /> -&ndash;&gt;-->
+<!--    <form action = "main.php" method = "post" />-->
+<!--        <h2>Login Page</h2>-->
+<!--        <a href="register.php">Register Here</a>-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        Input Username: <input type="text" name="Username" required/> <br>-->
+<!--        Input Password: <input type="password" name="Password" required/> <br>-->
+<!--        <br>-->
+<!--        <input type="submit" name="submit" value="Log-In"/>-->
+<!--    </form>-->
+
+    <!--    MODIFIED-->
+    <!--- <meta http-equiv = "Refresh" content="5; url=register.html" /> --->
+
+    <div class="user">
+        <form action = "main.php" method = "post" class="form"/>
+            <div class="form__group">
+                <input type="text" placeholder="Username" class="form__input" name="Username" required/> <br>
+            </div>
+
+            <div class="form__group">
+                <input type="password" placeholder="Password" class="form__input" name="Password" required/> <br>
+            </div>
+
+            <button class="btn" type="submit" name="submit" value="Log-In">Log-In</button>
+        </form>
+    </div>
+
+<!--<div class="user">-->
+<!--    <header class="user__header">-->
+<!--        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />-->
+<!--        <h1 class="user__title">A lightweight and simple sign-up form</h1>-->
+<!--    </header>-->
+
+<!--    <form class="form">-->
+<!--        <div class="form__group">-->
+<!--            <input type="text" placeholder="Username" class="form__input" />-->
+<!--        </div>-->
+
+<!--        <div class="form__group">-->
+<!--            <input type="email" placeholder="Email" class="form__input" />-->
+<!--        </div>-->
+
+<!--        <div class="form__group">-->
+<!--            <input type="password" placeholder="Password" class="form__input" />-->
+<!--        </div>-->
+
+<!--        <button class="btn" type="button">Register</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+<div style="position: absolute; left: 250px; top: -11px">
+    <b><p id="countdown" align="left"></p></b>
+</div>
+
+<div class="topNav">
+    <a href="registration.html">Register</a>
+    <a class="active" href="login.html">Log In</a>
+    <a href="vps.html">Vice Presidents</a>
+    <a href="presis.html">Presidents</a>
+    <a href="home.html">Home</a>
+
+    <div class="topLeft">
+        <b>VOTING STARTS IN:</b>
+    </div>
+</div>
+
+<div class="content" style="font-family: Impact; text-align: center; font-size: 100px; top: -55px">
+    <center><b><p>2022 PHILIPPINE ELECTIONS</p></b></center>
+</div>
+
+
+
+<!--            onclick="facebook.com;" style="cursor: pointer;" -->
+<!--            <div class="row">-->
+<!--                <div class="column" style="background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */">-->
+<!--                    <div class="column1Row1">-->
+<!--                       <a href="https://www.rappler.com/nation/elections/phvote-coalition-campaigns-inform-engage-voters-2022-philippine-polls" target="_blank"><u><h2>#PHVote: Campaigns to inform and engage voters for the 2022 PH elections</h2></u></a>-->
+<!--                    </div>-->
+
+<!--                    <div class="column1Row2">-->
+<!--                        <h3>Developing / Updated September 13, 2021 3:04 PHT</h3>-->
+<!--                    </div>-->
+
+<!--                    <img src="column1.png" class="column1Image">-->
+<!--                </div>-->
+
+<!--                <div class="column" style="background: rgba(0, 0, 0, 0.5);">-->
+<!--                    <div class="column2Row1">-->
+<!--                        <a href="https://www.facebook.com/rapplerdotcom/posts/4004937819526971" target="_blank"><u><h2>How to register for the 2022 Philippine Elections?</h2></u></a>-->
+<!--                        <img src="column2.png" class="column2Image">-->
+<!--                        <a href="https://irehistro.comelec.gov.ph/cef1" target="_blank"><u><h2>Online Accomplishment of Forms for Voter Registration</h2></u></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="column" style="background: rgba(0, 0, 0, 0.5);">-->
+<!--                    <div class="column3Row1">-->
+<!--                        <a href="https://www.rappler.com/nation/elections/phvote-online-campaign-voter-registration-problems" target="_blank"><u><h2>#PHVote: Have you encountered voter registration problems?</h2></u></a>-->
+<!--                    </div>-->
+
+<!--                    <div class="column3Row2">-->
+<!--                        <h3>June 8, 2021 8:07 AM PHT</h3>-->
+<!--                    </div>-->
+
+<!--                    <img src="column3.png" class="column3Image">-->
+<!--                </div>-->
+<!--            </div>-->
+
+<div class="botNav">
+    <a>Contact Us at GOV.PH</a>
+</div>
+
+<div class="hashtag">
+    <a>#MagpaRehistroKa</a>
+</div>
+
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("May 9, 2022 12:00:00").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("countdown").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+
+    const button = document.querySelector('.btn')
+    const form   = document.querySelector('.form')
+
+    button.addEventListener('click', function() {
+        form.classList.add('form--no')
+    });
+</script>
+
+</body>
+</html>
